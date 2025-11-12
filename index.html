@@ -539,6 +539,150 @@
         .card, .feature-card, .service-item {
             animation: fadeIn 0.6s ease-out;
         }
+
+        header {
+            text-align: center;
+            padding: 40px 20px 30px;
+            color: white;
+            position: relative;
+        }
+
+        /* Water Drop Animation Container */
+        .water-drops-left,
+        .water-drops-right {
+            position: absolute;
+            top: 0;
+            width: 150px;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .water-drops-left {
+            left: 20px;
+        }
+
+        .water-drops-right {
+            right: 20px;
+        }
+
+        /* Water Drops */
+        .water-drop {
+            position: absolute;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9), rgba(135, 206, 250, 0.7));
+            border-radius: 50% 50% 50% 0;
+            animation: fall linear infinite;
+            opacity: 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .water-drop::before {
+            content: '';
+            position: absolute;
+            top: 20%;
+            left: 20%;
+            width: 30%;
+            height: 30%;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+        }
+
+        /* Different drop sizes and animations */
+        .water-drop:nth-child(1) {
+            width: 20px;
+            height: 25px;
+            left: 20%;
+            animation-duration: 3s;
+            animation-delay: 0s;
+        }
+
+        .water-drop:nth-child(2) {
+            width: 15px;
+            height: 20px;
+            left: 50%;
+            animation-duration: 3.5s;
+            animation-delay: 1s;
+        }
+
+        .water-drop:nth-child(3) {
+            width: 18px;
+            height: 23px;
+            left: 80%;
+            animation-duration: 4s;
+            animation-delay: 2s;
+        }
+
+        .water-drop:nth-child(4) {
+            width: 22px;
+            height: 27px;
+            left: 35%;
+            animation-duration: 3.2s;
+            animation-delay: 0.5s;
+        }
+
+        .water-drop:nth-child(5) {
+            width: 16px;
+            height: 21px;
+            left: 65%;
+            animation-duration: 3.8s;
+            animation-delay: 1.5s;
+        }
+
+        .water-drop:nth-child(6) {
+            width: 19px;
+            height: 24px;
+            left: 10%;
+            animation-duration: 4.2s;
+            animation-delay: 2.5s;
+        }
+
+        @keyframes fall {
+            0% {
+                top: -30px;
+                opacity: 0;
+                transform: rotate(0deg);
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                top: 100%;
+                opacity: 0;
+                transform: rotate(15deg);
+            }
+        }
+
+        /* Shield Animation */
+        .shield-icon {
+            position: absolute;
+            font-size: 60px;
+            opacity: 0.15;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .shield-left {
+            left: 50px;
+            top: 50%;
+            animation-delay: 0s;
+        }
+
+        .shield-right {
+            right: 50px;
+            top: 50%;
+            animation-delay: 3s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(5deg);
+            }
+        }
     </style>
 </head>
 <body>
