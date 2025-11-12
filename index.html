@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Services - Contact Us</title>
+    <title>HG Water Proofing Solutions - Expert Waterproofing Services</title>
     <style>
         * {
             margin: 0;
@@ -15,81 +15,176 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
             min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Animated water drops background */
+        .water-drop {
+            position: fixed;
+            top: -10px;
+            width: 3px;
+            height: 50px;
+            background: linear-gradient(transparent, rgba(255,255,255,0.3));
+            animation: fall linear infinite;
+            z-index: 0;
+        }
+
+        @keyframes fall {
+            to { top: 100vh; }
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 20px;
+            position: relative;
+            z-index: 1;
         }
 
+        /* Hero Header */
         header {
             text-align: center;
-            padding: 40px 20px;
+            padding: 60px 20px 40px;
             color: white;
-            animation: fadeIn 1s ease-in;
+            position: relative;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        header::before {
+            content: '💧';
+            font-size: 80px;
+            display: block;
+            margin-bottom: 20px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
         }
 
         header h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-size: 3.5em;
+            margin-bottom: 15px;
+            text-shadow: 3px 3px 10px rgba(0,0,0,0.5);
+            background: linear-gradient(45deg, #00d4ff, #00ff88);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 5px rgba(0,212,255,0.5)); }
+            to { filter: drop-shadow(0 0 20px rgba(0,212,255,0.8)); }
         }
 
         header p {
-            font-size: 1.2em;
-            opacity: 0.9;
+            font-size: 1.4em;
+            opacity: 0.95;
+            color: #00d4ff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
+        .tagline {
+            background: rgba(0, 212, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(0, 212, 255, 0.3);
+            border-radius: 50px;
+            padding: 15px 30px;
+            display: inline-block;
+            margin-top: 20px;
+            color: white;
+            font-weight: bold;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Main Content Area */
         .content-wrapper {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr 2fr;
             gap: 30px;
-            margin-top: 30px;
+            margin-top: 40px;
         }
 
+        /* Glassmorphism Cards */
         .card {
-            background: white;
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4),
+                        inset 0 0 20px rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
             animation: slideUp 0.8s ease-out;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 80px rgba(0,212,255,0.3),
+                        inset 0 0 30px rgba(255,255,255,0.15);
         }
 
         .card h2 {
-            color: #667eea;
-            margin-bottom: 20px;
-            font-size: 1.8em;
-            border-bottom: 3px solid #667eea;
-            padding-bottom: 10px;
+            color: #00d4ff;
+            margin-bottom: 30px;
+            font-size: 2em;
+            border-bottom: 3px solid #00d4ff;
+            padding-bottom: 15px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
 
+        .card h2::before {
+            content: attr(data-icon);
+            font-size: 1.2em;
+        }
+
+        /* Contact Items */
         .contact-item {
             display: flex;
             align-items: center;
-            margin: 15px 0;
-            padding: 10px;
-            border-radius: 8px;
-            transition: background 0.3s;
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            transition: all 0.3s;
+            border: 1px solid transparent;
         }
 
         .contact-item:hover {
-            background: #f0f0f0;
+            background: rgba(0, 212, 255, 0.2);
+            transform: translateX(10px);
+            border: 1px solid rgba(0, 212, 255, 0.5);
         }
 
         .contact-icon {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #00d4ff, #00ff88);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-right: 15px;
-            color: white;
-            font-weight: bold;
+            margin-right: 20px;
+            font-size: 1.5em;
+            box-shadow: 0 5px 15px rgba(0,212,255,0.4);
+            animation: rotate 10s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
         .contact-details {
@@ -98,55 +193,174 @@
 
         .contact-label {
             font-weight: bold;
-            color: #666;
+            color: #00d4ff;
             font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .contact-value {
-            color: #333;
+            color: white;
             font-size: 1.1em;
+            margin-top: 5px;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
         }
 
         .service-item {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            padding: 20px;
-            margin: 15px 0;
-            border-radius: 10px;
-            border-left: 4px solid #667eea;
-            transition: transform 0.3s, box-shadow 0.3s;
+            background: linear-gradient(135deg, rgba(0,212,255,0.1) 0%, rgba(0,255,136,0.1) 100%);
+            padding: 25px;
+            border-radius: 20px;
+            border-left: 5px solid #00d4ff;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .service-item::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(0,212,255,0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.5s;
+        }
+
+        .service-item:hover::before {
+            left: 100%;
         }
 
         .service-item:hover {
-            transform: translateX(5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 20px 40px rgba(0,212,255,0.4);
+            border-left-width: 8px;
         }
 
         .service-item h3 {
-            color: #667eea;
-            margin-bottom: 8px;
+            color: #00d4ff;
+            margin-bottom: 12px;
+            font-size: 1.3em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .service-item p {
-            color: #555;
-            line-height: 1.5;
+            color: rgba(255,255,255,0.9);
+            line-height: 1.6;
+            font-size: 0.95em;
         }
 
-        footer {
+        /* Why Choose Us Section */
+        .features-section {
+            margin-top: 50px;
+            background: rgba(0, 212, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            padding: 40px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        .features-section h2 {
+            text-align: center;
+            color: #00d4ff;
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
             text-align: center;
             padding: 30px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .feature-card:hover {
+            background: rgba(0, 212, 255, 0.1);
+            border: 2px solid #00d4ff;
+            transform: translateY(-10px);
+        }
+
+        .feature-icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .feature-card h3 {
+            color: #00d4ff;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+
+        .feature-card p {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.95em;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
             color: white;
-            margin-top: 40px;
+            margin-top: 60px;
+            background: rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            border: 1px solid rgba(255,255,255,0.1);
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        footer p {
+            margin: 10px 0;
+            font-size: 1em;
         }
 
-        @keyframes slideUp {
+        .footer-badges {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: linear-gradient(135deg, #00d4ff, #00ff88);
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            color: #0f2027;
+            box-shadow: 0 5px 15px rgba(0,212,255,0.4);
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(-50px);
             }
             to {
                 opacity: 1;
@@ -154,90 +368,213 @@
             }
         }
 
-        @media (max-width: 768px) {
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
             .content-wrapper {
                 grid-template-columns: 1fr;
             }
 
             header h1 {
+                font-size: 2.5em;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
                 font-size: 2em;
+            }
+
+            .card {
+                padding: 25px;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Animated water drops -->
+    <div class="water-drop" style="left: 10%; animation-duration: 3s; animation-delay: 0s;"></div>
+    <div class="water-drop" style="left: 25%; animation-duration: 2.5s; animation-delay: 0.5s;"></div>
+    <div class="water-drop" style="left: 40%; animation-duration: 3.2s; animation-delay: 1s;"></div>
+    <div class="water-drop" style="left: 55%; animation-duration: 2.8s; animation-delay: 0.3s;"></div>
+    <div class="water-drop" style="left: 70%; animation-duration: 3.5s; animation-delay: 0.8s;"></div>
+    <div class="water-drop" style="left: 85%; animation-duration: 2.6s; animation-delay: 1.2s;"></div>
+
     <div class="container">
         <header>
-            <h1>🌟 Your Company Name</h1>
-            <p>Professional Services & Solutions</p>
+            <h1>HG Water Proofing Solutions</h1>
+            <p>Expert Waterproofing Services for Residential & Commercial Properties</p>
+            <div class="tagline">🛡️ Protecting Your Property from Water Damage Since 2018</div>
         </header>
 
         <div class="content-wrapper">
             <!-- Contact Details Card -->
             <div class="card">
-                <h2>📞 Contact Us</h2>
+                <h2 data-icon="📞">Get In Touch</h2>
                 
                 <div class="contact-item">
                     <div class="contact-icon">📧</div>
                     <div class="contact-details">
-                        <div class="contact-label">Email</div>
-                        <div class="contact-value">contact@yourcompany.com</div>
+                        <div class="contact-label">Email Us</div>
+                        <div class="contact-value">info@hgwaterproofing.com</div>
                     </div>
                 </div>
 
                 <div class="contact-item">
                     <div class="contact-icon">📱</div>
                     <div class="contact-details">
-                        <div class="contact-label">Phone</div>
-                        <div class="contact-value">+91 12345 67890</div>
+                        <div class="contact-label">Call Us</div>
+                        <div class="contact-value">+91 98765 43210</div>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">💬</div>
+                    <div class="contact-details">
+                        <div class="contact-label">WhatsApp</div>
+                        <div class="contact-value">+91 98765 43210</div>
                     </div>
                 </div>
 
                 <div class="contact-item">
                     <div class="contact-icon">📍</div>
                     <div class="contact-details">
-                        <div class="contact-label">Address</div>
-                        <div class="contact-value">123 Business Street, Hyderabad, Telangana, India</div>
+                        <div class="contact-label">Visit Us</div>
+                        <div class="contact-value">Hyderabad, Telangana, India</div>
                     </div>
                 </div>
 
                 <div class="contact-item">
                     <div class="contact-icon">🕐</div>
                     <div class="contact-details">
-                        <div class="contact-label">Business Hours</div>
-                        <div class="contact-value">Mon - Fri: 9:00 AM - 6:00 PM</div>
+                        <div class="contact-label">Working Hours</div>
+                        <div class="contact-value">Mon - Sat: 9:00 AM - 7:00 PM</div>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon">🚨</div>
+                    <div class="contact-details">
+                        <div class="contact-label">Emergency Services</div>
+                        <div class="contact-value">Available 24/7</div>
                     </div>
                 </div>
             </div>
 
             <!-- Services Card -->
             <div class="card">
-                <h2>🚀 Our Services</h2>
+                <h2 data-icon="🔧">Our Services</h2>
 
-                <div class="service-item">
-                    <h3>Web Development</h3>
-                    <p>Custom website design and development tailored to your business needs with modern technologies.</p>
+                <div class="services-grid">
+                    <div class="service-item">
+                        <h3>🏠 Roof & Terrace Waterproofing</h3>
+                        <p>Complete waterproofing solutions for flat roofs, terraces, balconies, and decks using advanced membrane systems and coatings.</p>
+                    </div>
+
+                    <div class="service-item">
+                        <h3>🚿 Bathroom & Kitchen Waterproofing</h3>
+                        <p>Expert sealing and waterproof membrane application for wet areas, preventing leakage, seepage, and dampness issues.</p>
+                    </div>
+
+                    <div class="service-item">
+                        <h3>🏗️ Basement & Foundation Waterproofing</h3>
+                        <p>Below-grade waterproofing with drainage systems, crack repair, and hydrostatic pressure management for long-lasting protection.</p>
+                    </div>
+
+                    <div class="service-item">
+                        <h3>🏊 Swimming Pool Waterproofing</h3>
+                        <p>Specialized waterproofing for swimming pools, water tanks, and fountains with durable, chemical-resistant coating systems.</p>
+                    </div>
+
+                    <div class="service-item">
+                        <h3>🧱 Exterior Wall Waterproofing</h3>
+                        <p>Complete protection against moisture penetration, damp-proofing treatments, and crack sealing for all building exteriors.</p>
+                    </div>
+
+                    <div class="service-item">
+                        <h3>🅿️ Parking & Commercial Waterproofing</h3>
+                        <p>Industrial-grade waterproofing solutions for parking garages, commercial buildings, and high-traffic areas with traffic coatings.</p>
+                    </div>
+
+                    <div class="service-item">
+                        <h3>🔍 Leak Detection & Repair</h3>
+                        <p>Advanced leak detection technology with permanent repair solutions and comprehensive preventive maintenance programs.</p>
+                    </div>
+
+                    <div class="service-item">
+                        <h3>⚡ Emergency Waterproofing Services</h3>
+                        <p>24/7 emergency response team for urgent leak repairs, flood damage control, and immediate water damage prevention.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Why Choose Us Section -->
+        <div class="features-section">
+            <h2>✨ Why Choose HG Water Proofing Solutions?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <span class="feature-icon">🏆</span>
+                    <h3>5+ Years Experience</h3>
+                    <p>Proven track record of successful waterproofing projects across Hyderabad</p>
                 </div>
 
-                <div class="service-item">
-                    <h3>Mobile Apps</h3>
-                    <p>Native and cross-platform mobile application development for iOS and Android devices.</p>
+                <div class="feature-card">
+                    <span class="feature-icon">✅</span>
+                    <h3>Quality Guaranteed</h3>
+                    <p>Premium materials and workmanship with comprehensive warranty coverage</p>
                 </div>
 
-                <div class="service-item">
-                    <h3>Digital Marketing</h3>
-                    <p>SEO, social media marketing, and content strategy to grow your online presence.</p>
+                <div class="feature-card">
+                    <span class="feature-icon">👷</span>
+                    <h3>Expert Team</h3>
+                    <p>Certified waterproofing specialists with extensive technical knowledge</p>
                 </div>
 
-                <div class="service-item">
-                    <h3>Consulting</h3>
-                    <p>Expert business and technology consulting to help you achieve your goals efficiently.</p>
+                <div class="feature-card">
+                    <span class="feature-icon">💰</span>
+                    <h3>Competitive Pricing</h3>
+                    <p>Best value for money with transparent quotes and no hidden charges</p>
+                </div>
+
+                <div class="feature-card">
+                    <span class="feature-icon">🚀</span>
+                    <h3>Fast Service</h3>
+                    <p>Quick response times and efficient project completion schedules</p>
+                </div>
+
+                <div class="feature-card">
+                    <span class="feature-icon">🔒</span>
+                    <h3>Licensed & Insured</h3>
+                    <p>Fully licensed, bonded, and insured for your peace of mind</p>
                 </div>
             </div>
         </div>
 
         <footer>
-            <p>&copy; 2025 Your Company Name. All rights reserved.</p>
+            <p style="font-size: 1.2em; font-weight: bold;">HG Water Proofing Solutions</p>
+            <p>&copy; 2025 All Rights Reserved</p>
+            <div class="footer-badges">
+                <span class="badge">✓ Licensed & Insured</span>
+                <span class="badge">✓ 5+ Years Experience</span>
+                <span class="badge">✓ Quality Guaranteed</span>
+                <span class="badge">✓ 24/7 Emergency Service</span>
+            </div>
+            <p style="margin-top: 20px; opacity: 0.8;">Serving Hyderabad and Surrounding Areas</p>
         </footer>
     </div>
 </body>
