@@ -53,13 +53,43 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 80px;
-            height: 80px;
+            width: 100px;
+            height: 100px;
             background: white;
-            border-radius: 12px;
+            border-radius: 50%;
             margin-bottom: 20px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-            font-size: 45px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #2a5298 0%, #3a6db5 100%);
+            opacity: 0.1;
+        }
+
+        .logo-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .logo-text {
+            font-size: 32px;
+            font-weight: 800;
+            color: #1e3c72;
+            letter-spacing: -1px;
+            line-height: 1;
+        }
+
+        .logo-icon {
+            font-size: 24px;
+            display: block;
+            margin-top: -5px;
         }
 
         header h1 {
@@ -336,9 +366,16 @@
             }
 
             .logo {
-                width: 70px;
-                height: 70px;
-                font-size: 40px;
+                width: 75px;
+                height: 75px;
+            }
+
+            .logo-text {
+                font-size: 24px;
+            }
+
+            .logo-icon {
+                font-size: 18px;
             }
 
             .card {
@@ -508,7 +545,12 @@
     <div class="header-bg">
         <div class="container">
             <header>
-                <div class="logo">💧</div>
+                <div class="logo">
+                    <div class="logo-content">
+                        <div class="logo-text">HG</div>
+                        <div class="logo-icon">💧</div>
+                    </div>
+                </div>
                 <h1>HG Water Proofing Solutions</h1>
                 <p>Expert Waterproofing Services for Residential & Commercial Properties</p>
                 <div class="tagline">🛡️ Protecting Your Property from Water Damage Since 2018</div>
