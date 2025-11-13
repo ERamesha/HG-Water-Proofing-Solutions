@@ -21,7 +21,8 @@
 
         /* Header Background */
         .header-bg {
-            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+            background: linear-gradient(135deg, rgba(15, 32, 39, 0.95) 0%, rgba(32, 58, 67, 0.95) 50%, rgba(44, 83, 100, 0.95) 100%),
+                        url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1920&q=80') center/cover;
             position: relative;
             padding-bottom: 40px;
             box-shadow: 0 10px 40px rgba(0,0,0,0.2);
@@ -44,7 +45,13 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(255, 255, 255, 0.03) 2px,
+                rgba(255, 255, 255, 0.03) 4px
+            );
             opacity: 0.5;
         }
 
@@ -824,16 +831,16 @@
         /* Responsive animations */
         @media (max-width: 1024px) {
             .water-animation-left {
-                left: 20px;
+                display: none;
             }
             .water-animation-right {
-                right: 20px;
+                display: none;
             }
             .shield-left {
-                left: 30px;
+                display: none;
             }
             .shield-right {
-                right: 30px;
+                display: none;
             }
         }
 
@@ -860,49 +867,11 @@
     <div class="header-bg">
         <div class="container">
             <header>
-                <!-- Left Water Animation -->
-                <div class="water-animation-left">
-                    <div class="water-drop drop-1"></div>
-                    <div class="water-drop drop-2"></div>
-                    <div class="water-drop drop-3"></div>
-                    <div class="water-drop drop-4"></div>
-                    <div class="water-drop drop-5"></div>
-                </div>
-
-                <!-- Left Shield Animation -->
-                <div class="shield-container shield-left">
-                    <div class="shield">
-                        <svg class="shield-icon" viewBox="0 0 80 90">
-                            <path class="shield-fill" d="M40,5 L70,15 L70,45 Q70,70 40,85 Q10,70 10,45 L10,15 Z"/>
-                            <polyline class="check-mark" points="25,45 35,55 55,35"/>
-                        </svg>
-                    </div>
-                </div>
-
                 <div class="logo">
                     <div class="logo-content">
                         <div class="logo-icon">💧</div>
                         <div class="logo-text">HG</div>
                     </div>
-                </div>
-                
-                <!-- Right Shield Animation -->
-                <div class="shield-container shield-right">
-                    <div class="shield">
-                        <svg class="shield-icon" viewBox="0 0 80 90">
-                            <path class="shield-fill" d="M40,5 L70,15 L70,45 Q70,70 40,85 Q10,70 10,45 L10,15 Z"/>
-                            <polyline class="check-mark" points="25,45 35,55 55,35"/>
-                        </svg>
-                    </div>
-                </div>
-
-                <!-- Right Water Animation -->
-                <div class="water-animation-right">
-                    <div class="water-drop drop-1"></div>
-                    <div class="water-drop drop-2"></div>
-                    <div class="water-drop drop-3"></div>
-                    <div class="water-drop drop-4"></div>
-                    <div class="water-drop drop-5"></div>
                 </div>
 
                 <h1>HG Water Proofing Solutions</h1>
